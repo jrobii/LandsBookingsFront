@@ -6,6 +6,7 @@ class BookingForm extends React.Component {
       this.state = {
         firstName: "",
         lastName: "",
+        phoneNum: "",
         date: "",
         time: "",
         requests: "",
@@ -37,6 +38,7 @@ class BookingForm extends React.Component {
       this.setState({
         firstName: "",
         lastName: "",
+        phoneNum: "",
         date: "",
         time: "",
         requests: "",
@@ -54,6 +56,9 @@ class BookingForm extends React.Component {
   
           <label>Last Name</label>
           <input type="text" name="lastName" value={this.state.lastName} onChange={this.handleChange} />
+
+          <label>Phone Number</label>
+          <input type="text" name="phoneNum" value={this.state.phoneNum} onChange={this.handleChange} />
   
           <label>Date</label>
           <input type="date" name="date" value={this.state.date} onChange={this.handleChange} />
