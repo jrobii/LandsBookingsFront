@@ -1,4 +1,5 @@
 import React from 'react';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 class BookingForm extends React.Component {
     constructor(props) {
@@ -10,15 +11,23 @@ class BookingForm extends React.Component {
         date: "",
         time: "",
         requests: "",
-        persons: ""
+        persons: "",
+        recaptchaResponse: ""
       };
   
       this.handleChange = this.handleChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
+      this.handleRecaptchaChange = this.handleRecaptchaChange.bind(this);
     }
   
     handleChange(e) {
       this.setState({ [e.target.name]: e.target.value})
+    }
+
+    handleRecaptchaChange(value) {
+      this.setState({
+        recaptchaResponse: value,
+      });
     }
   
     handleSubmit(e) {
@@ -44,6 +53,8 @@ class BookingForm extends React.Component {
         requests: "",
         persons: ""
       });
+
+      this.recaptcha.reset();
     }
   
     
@@ -71,6 +82,7 @@ class BookingForm extends React.Component {
   
           <label>Special Requests</label>
           <textarea name="requests" value={this.state.requests} onChange={this.handleChange} />
+          <ReCAPTCHA ref={(el) => { this.recaptcha = el; }} sitekey="6LcheZMaAAAAAJk1CCMMGwI4Wfq4WtD7Zmdh8tNe" onChange={this.handleRecaptchaChange} />
           <button type="button" onClick={this.handleSubmit}>Submit</button>
         </form>
         
