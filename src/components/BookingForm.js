@@ -21,19 +21,18 @@ class BookingForm extends React.Component {
     }
   
     handleChange(e) {
-      this.setState({ [e.target.name]: e.target.value})
+      this.setState({...this.state, [e.target.name]: e.target.value})
     }
 
     handleRecaptchaChange(value) {
-      this.setState({
-        recaptchaResponse: value,
+      this.setState({...this.state, recaptchaResponse: value,
       });
     }
   
     handleSubmit(e) {
       e.preventDefault();
   
-      fetch("http://localhost:8000/api/booking", {
+      fetch("/api/booking", {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
