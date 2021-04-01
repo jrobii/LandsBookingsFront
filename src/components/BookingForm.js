@@ -1,5 +1,7 @@
 import React from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
+import { DatePicker } from 'antd';
+import 'antd/dist/antd.css';
 
 class BookingForm extends React.Component {
     constructor(props) {
@@ -17,7 +19,14 @@ class BookingForm extends React.Component {
   
       this.handleChange = this.handleChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
+      this.handleDateChange = this.handleDateChange.bind(this);
       this.handleRecaptchaChange = this.handleRecaptchaChange.bind(this);
+    }
+
+    dateFormat = "DD/MM/YYYY"
+
+    handleDateChange(value, dateString) {
+      this.setState({...this.state, date: dateString})
     }
   
     handleChange(e) {
@@ -71,7 +80,7 @@ class BookingForm extends React.Component {
           <input type="text" name="phoneNum" value={this.state.phoneNum} onChange={this.handleChange} />
   
           <label>Date</label>
-          <input type="date" name="date" value={this.state.date} onChange={this.handleChange} />
+          <DatePicker onChange={this.handleDateChange} format={this.dateFormat}/>
   
           <label>Time</label>
           <input type="time" name="time" value={this.state.time} onChange={this.handleChange} />
