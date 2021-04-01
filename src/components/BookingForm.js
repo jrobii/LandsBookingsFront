@@ -1,6 +1,6 @@
 import React from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
-import { DatePicker } from 'antd';
+import { DatePicker, TimePicker } from 'antd';
 import 'antd/dist/antd.css';
 
 class BookingForm extends React.Component {
@@ -20,6 +20,7 @@ class BookingForm extends React.Component {
       this.handleChange = this.handleChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
       this.handleDateChange = this.handleDateChange.bind(this);
+      this.handleTimeChange = this.handleTimeChange.bind(this);
       this.handleRecaptchaChange = this.handleRecaptchaChange.bind(this);
     }
 
@@ -27,6 +28,11 @@ class BookingForm extends React.Component {
 
     handleDateChange(value, dateString) {
       this.setState({...this.state, date: dateString})
+    }
+
+    handleTimeChange(value, timeString) {
+      console.log(timeString)
+      this.setState({...this.state, time: timeString})
     }
   
     handleChange(e) {
@@ -81,9 +87,9 @@ class BookingForm extends React.Component {
   
           <label>Date</label>
           <DatePicker onChange={this.handleDateChange} format={this.dateFormat}/>
-  
+
           <label>Time</label>
-          <input type="time" name="time" value={this.state.time} onChange={this.handleChange} />
+          <TimePicker minuteStep={15} use12Hours format="h:mm a" onChange={this.handleTimeChange} />
   
           <label>Number of Persons</label>
           <input type="number" name="persons" value={this.state.persons} onChange={this.handleChange} />
