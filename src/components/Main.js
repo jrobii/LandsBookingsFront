@@ -3,12 +3,12 @@ import BookingForm from './BookingForm';
 import Admin from './Admin';
 import Login from './Login';
 import { Route, Switch } from 'react-router-dom';
-
+import PrivateRoute from './PrivateRoute'
 
 const Main = () => (
     <Switch>
       <Route exact path='/' component={BookingForm}></Route>
-      <Route exact path='/admin' component={Admin}></Route>
+      <PrivateRoute exact path='/admin' component={Admin}></PrivateRoute>
       <Route exact path='/login' component={Login}></Route>
     </Switch>
 );

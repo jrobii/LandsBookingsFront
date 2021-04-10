@@ -1,4 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { signIn } from '../actions';
+import { push } from 'connected-react-router';
 
 class Login extends React.Component {
   constructor(props) {
@@ -8,8 +11,8 @@ class Login extends React.Component {
       password: "",
     }
 
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(e) {
@@ -27,9 +30,16 @@ class Login extends React.Component {
       },
       body: JSON.stringify(this.state)
     }).then((res) => res.json())
-    .then((data) => console.log(data))
+    .then((data) => {
+      console.log(data);
+      if (data.status === "success" && data.hasOwnProperty('token')) {
+          this.props.signIn()
+          this.props.push('/admin');
+          console.log(this.props)
+      }
+    })
     .catch((err) => console.log(err))
-
+    
     this.setState({
       username: "",
       password: ""
@@ -50,6 +60,23 @@ class Login extends React.Component {
         
       )
     }
+
+    
   }
 
-export default Login;
+  const mapStateToProps = (state) => {
+    return {
+      isLogged: state.isLogged
+    }
+  }
+
+  const mapDispatchToProps = () => {
+    return {
+      signIn,
+      push
+    }
+    
+  }
+
+
+export default connect(mapStateToProps, mapDispatchToProps())(Login);
