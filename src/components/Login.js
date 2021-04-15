@@ -15,6 +15,18 @@ class Login extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount() {
+    fetch('/api/checkAuth')
+      .then(resp => resp.json())
+      .then(data => {
+        if (data.authenticated && !this.props.isLogged) {
+          
+          this.props.signIn()
+          this.props.push('/admin');
+        }
+    });
+  }
+
   handleChange(e) {
     this.setState({...this.state, [e.target.name]: e.target.value})
   }

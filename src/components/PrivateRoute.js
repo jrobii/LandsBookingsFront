@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 
 const PrivateRoute = ({component: Component, ...rest}) => {
     const isLogged = useSelector(state => state.isLogged)
-    console.log(isLogged)
     return (
 
         // Show the component only when the user is logged in

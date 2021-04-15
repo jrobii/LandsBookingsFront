@@ -1,5 +1,5 @@
 import React from 'react';
-import Booking from './Boooking';
+import Booking from './Booking';
 import { DatePicker } from 'antd';
 import 'antd/dist/antd.css';
 
