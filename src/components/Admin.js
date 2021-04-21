@@ -2,6 +2,7 @@ import React from 'react';
 import Booking from './Booking';
 import { DatePicker } from 'antd';
 import 'antd/dist/antd.css';
+import '../css/admin.css';
 
 class Admin extends React.Component {
 constructor(props) {
@@ -41,24 +42,23 @@ handleDateChange(value, dateString) {
     const bookings = this.state.bookings.map(booking => <Booking key={booking.id} firstName={booking.firstName} lastName={booking.lastName} phoneNum={booking.phoneNum} 
       date={booking.date} time={booking.time} persons={booking.persons} requests={booking.requests} />);
     return (
-      <div>
-        <DatePicker onChange={this.handleDateChange} format={this.dateFormat}/>
+      <div class="bookingTable">
+        <DatePicker style={{marginBottom: 10, marginRight: 10}} onChange={this.handleDateChange} format={this.dateFormat}/>
         <button type="button" onClick={this.handleGetBookings}>Find Bookings</button>
-      <table id="bookings">
-        <thead>
-          <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Phone Number</th>
-            <th>Date</th>
-            <th>Time</th>
-            <th>Persons Attending</th>
-            <th>Requests</th>
-          </tr>
-        </thead>
-        <tbody>{bookings}</tbody>
-        
-      </table>
+        <table id="bookings">
+          <thead>
+            <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Phone Number</th>
+              <th>Date</th>
+              <th>Time</th>
+              <th>Persons Attending</th>
+              <th>Requests</th>
+            </tr>
+          </thead>
+          <tbody>{bookings}</tbody>
+        </table>
       </div>
     )
   }

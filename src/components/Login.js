@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { signIn } from '../actions';
 import { push } from 'connected-react-router';
+import '../css/login.css';
 
 class Login extends React.Component {
   constructor(props) {
@@ -61,7 +62,7 @@ class Login extends React.Component {
 
     render() {
       return (
-        <form>
+        <form class="loginForm">
           <label>Username</label>
           <input type="text" name="username" value={this.state.username} onChange={this.handleChange} />
   

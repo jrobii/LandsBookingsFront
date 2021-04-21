@@ -33,24 +33,70 @@ input[type=text], textarea,  input[type=number]{
 }
 
 .container {
-    width: 75%;
+    width: 100%;
+    height: 100%;
     border-radius: 5px;
-    background-color: #f2f2f2;
-    padding: 20px;
     margin: auto;
     display: flexbox;
     justify-content: center;
     align-items: center;
-
 }
 
-.recaptcha {
+.form {
+  width: 50%;
+  margin: 5% auto auto auto;
+  background-color: #f2f2f2;
+  padding: 2%;
+  z-index: 2;
+}
+
+.booking-form {
+  width: 100%;
+  border-radius: 5px;
+  padding: 0px 20px 20px 20px;
+  margin: auto;
+  position: absolute;
+  overflow: auto;
+
+ 
+}
+
+.booking-form::before {
+  content: "";
+  position: fixed;
+  left: 0;
+  right: 0;
+  display: block;
+  background-image: url('../public/lands2.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: -1;
+  -webkit-filter: blur(3px);
+  -moz-filter: blur(3px);
+  -o-filter: blur(3px);
+  -ms-filter: blur(3px);
+  filter: blur(3px);
+  width: 100%;
+  height: 100%;
+}
+
+.recaptcha > div > div{
     padding-bottom: 15px;
     margin: auto;
+    display: flex;
+    place-content: center;
 }
 
-body {
-    background-color: #fdf8f6;
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+.header{
+  width: 100%;
+  height: auto;
+  
 }
 
 .submit {
