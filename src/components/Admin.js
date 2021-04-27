@@ -29,13 +29,13 @@ class Admin extends React.Component {
       body: JSON.stringify(this.state)
     }).then((res) => res.json())
       .then(data => {
-        this.setState({ ...this.state, bookings: data })
+        this.setState({ ...this.state, bookings: data });
       })
-      .catch((err) => console.log(err))
+      .catch((err) => console.log(err));
   }
 
   handleDateChange(value, dateString) {
-    this.setState({ ...this.state, selectedDate: dateString })
+    this.setState({ ...this.state, selectedDate: dateString });
   }
 
   async handleDelete(id) {
@@ -65,14 +65,13 @@ class Admin extends React.Component {
               <th>First Name</th>
               <th>Last Name</th>
               <th>Phone Number</th>
-              <th>Date</th>
-              <th>Time</th>
+              <th>Date & Time</th>
               <th>Persons Attending</th>
               <th>Requests</th>
               <th>Actions</th>
             </tr>
           </thead>
-          <tbody>{bookings}</tbody>
+          <tbody>{bookings.length ? bookings : <h3>There are currently no bookings for this date.</h3>}</tbody>
         </table>
       </div>
     )
