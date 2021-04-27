@@ -39,7 +39,7 @@ handleDateChange(value, dateString) {
 }
 
   render() {
-    const bookings = this.state.bookings.map(booking => <Booking key={booking.id} firstName={booking.firstName} lastName={booking.lastName} phoneNum={booking.phoneNum} 
+    const bookings = this.state.bookings.map(booking => <Booking key={booking.id} id={booking.id} firstName={booking.firstName} lastName={booking.lastName} phoneNum={booking.phoneNum} 
       date={booking.date} time={booking.time} persons={booking.persons} requests={booking.requests} />);
     return (
       <div class="bookingTable">
@@ -55,6 +55,7 @@ handleDateChange(value, dateString) {
               <th>Time</th>
               <th>Persons Attending</th>
               <th>Requests</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>{bookings}</tbody>

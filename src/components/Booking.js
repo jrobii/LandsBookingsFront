@@ -1,5 +1,6 @@
 import React from 'react';
-import '../App.css';
+import '../css/admin.css';
+
 const Booking = props => {
     return (
         <tr>
@@ -10,7 +11,11 @@ const Booking = props => {
             <td>{props.time}</td>
             <td>{props.persons}</td>
             <td>{props.requests}</td>
+            <td><button class="editButton">Edit</button>
+            <button class="deleteButton">Delete</button></td>
+            
       </tr>
+
       
     );
   };
