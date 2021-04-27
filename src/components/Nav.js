@@ -14,7 +14,7 @@ class Nav extends React.Component {
         return (
             <Menu theme="light" onClick={this.handleClick} selectedKeys={[current]} mode="horizontal">
                 <Menu.Item disabled>
-                    <h2 style={{margin: 0}}>Landsborough Hotel</h2>
+                    <h2 style={{ margin: 0 }}>Landsborough Hotel</h2>
                 </Menu.Item>
                 <Menu.Item key="booking">
                     <Link to="/">Booking</Link>

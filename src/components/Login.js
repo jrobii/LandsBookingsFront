@@ -18,7 +18,7 @@ class Login extends React.Component {
 
   componentDidMount() {
     fetch('/api/checkAuth')
-      .then(resp => resp.json())
+      .then(res => res.json())
       .then(data => {
         if (data.authenticated && !this.props.isLogged) {
           

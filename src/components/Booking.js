@@ -1,24 +1,25 @@
 import React from 'react';
 import '../css/admin.css';
+import { Link } from 'react-router-dom';
 
 const Booking = (props) => {
+  //const history = useHistory()
+  return (
+    <tr>
+      <td>{props.firstName}</td>
+      <td>{props.lastName}</td>
+      <td>{props.phoneNum}</td>
+      <td>{props.date}</td>
+      <td>{props.time}</td>
+      <td>{props.persons}</td>
+      <td>{props.requests}</td>
+      <td><Link to={`/booking/${props.id}`} title="Edit"><button className="editButton">Edit</button></Link>
+        <button className="deleteButton" onClick={() => props.onDelete(props.id)}>Delete</button></td>
 
-    return (
-        <tr>
-            <td>{props.firstName}</td>
-            <td>{props.lastName}</td>
-            <td>{props.phoneNum}</td>
-            <td>{props.date}</td>
-            <td>{props.time}</td>
-            <td>{props.persons}</td>
-            <td>{props.requests}</td>
-            <td><button className="editButton">Edit</button>
-            <button className="deleteButton" onClick={() => props.onDelete(props.id)}>Delete</button></td>
-            
-      </tr>
+    </tr>
 
-      
-    );
-  };
 
-  export default Booking;
+  );
+};
+
+export default Booking;

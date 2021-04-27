@@ -1,0 +1,40 @@
+@import '~antd/dist/antd.css';
+
+input[type=text], textarea,  input[type=number]{
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+}
+
+.editContainer {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    margin: auto;
+    display: flexbox;
+    justify-content: center;
+    align-items: center;
+}
+
+.editForm {
+  width: 50%;
+  margin: 5% auto auto auto;
+  background-color: #f2f2f2;
+  padding: 2%;
+  z-index: 2;
+}
+
+.editBooking-form {
+  width: 100%;
+  border-radius: 5px;
+  padding: 0px 20px 20px 20px;
+  margin: auto;
+  position: absolute;
+  overflow: auto;
+
+ 
+}
