@@ -1,7 +1,8 @@
 import React from 'react';
 import '../css/admin.css';
 
-const Booking = props => {
+const Booking = (props) => {
+
     return (
         <tr>
             <td>{props.firstName}</td>
@@ -11,8 +12,8 @@ const Booking = props => {
             <td>{props.time}</td>
             <td>{props.persons}</td>
             <td>{props.requests}</td>
-            <td><button class="editButton">Edit</button>
-            <button class="deleteButton">Delete</button></td>
+            <td><button className="editButton">Edit</button>
+            <button className="deleteButton" onClick={() => props.onDelete(props.id)}>Delete</button></td>
             
       </tr>
 

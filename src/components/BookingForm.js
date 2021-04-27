@@ -81,9 +81,9 @@ handleSubmit(e) {
 
 render() {
 return (
-  <div class="container">
-    <div class="booking-form">
-      <div class="form">
+  <div className="container">
+    <div className="booking-form">
+      <div className="form">
         <form>
           <label>First Name</label>
           <input type="text" name="firstName" value={this.state.firstName} onChange={this.handleChange} />
@@ -106,10 +106,10 @@ return (
 
           <label>Special Requests</label>
           <textarea name="requests" value={this.state.requests} onChange={this.handleChange} />
-          <div class="recaptcha">
+          <div className="recaptcha">
             <ReCAPTCHA ref={(el) => { this.recaptcha = el; }} sitekey="6LcheZMaAAAAAJk1CCMMGwI4Wfq4WtD7Zmdh8tNe" onChange={this.handleRecaptchaChange} />
           </div>
-          <button class="submit" type="button" onClick={this.handleSubmit}>Submit</button>
+          <button className="submit" type="button" onClick={this.handleSubmit}>Submit</button>
         </form>
       </div>
     </div>
