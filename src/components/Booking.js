@@ -8,6 +8,7 @@ const Booking = (props) => {
       <td>{props.firstName}</td>
       <td>{props.lastName}</td>
       <td>{props.phoneNum}</td>
+      <td>{props.location}</td>
       <td>{props.date}, {props.time}</td>
       <td>{props.persons}</td>
       <td>{props.requests}</td>

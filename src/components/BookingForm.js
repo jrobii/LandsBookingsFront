@@ -1,7 +1,6 @@
 import React from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { DatePicker, TimePicker } from 'antd';
-//import 'antd/dist/antd.css';
 import '../css/bookingform.css';
 
 class BookingForm extends React.Component {
@@ -11,6 +10,7 @@ class BookingForm extends React.Component {
       firstName: "",
       lastName: "",
       phoneNum: "",
+      location: "",
       date: "",
       time: "",
       requests: "",
@@ -69,6 +69,7 @@ class BookingForm extends React.Component {
       firstName: "",
       lastName: "",
       phoneNum: "",
+      location: "",
       date: "",
       time: "",
       requests: "",
@@ -93,6 +94,15 @@ class BookingForm extends React.Component {
 
               <label>Phone Number</label>
               <input type="text" name="phoneNum" value={this.state.phoneNum} onChange={this.handleChange} />
+
+              <label>Where would you like to sit?</label>
+              <select value={this.state.location} name="location" onChange={this.handleChange}>
+                <option value="Dining Room">Dining Room</option>
+                <option value="Pool Room">Pool Room</option>
+                <option value="Deck">Deck</option>
+                <option value="Outdoor Dining">Outdoor Dining</option>
+              </select>
+
               <div>
                 <label>Date</label>
                 <DatePicker disabledDate={d => !d || d.isBefore(this.minimum)} onChange={this.handleDateChange} format={this.dateFormat} />

@@ -79,6 +79,7 @@ class EditBooking extends React.Component {
                     firstName: data.firstName,
                     lastName: data.lastName,
                     phoneNum: data.phoneNum,
+                    location: data.location,
                     date: data.date,
                     time: data.time,
                     requests: data.requests,
@@ -105,6 +106,14 @@ class EditBooking extends React.Component {
 
                             <label>Phone Number</label>
                             <input type="text" name="phoneNum" value={this.state.phoneNum} onChange={this.handleChange} />
+
+                            <label>Location</label>
+                            <select value={this.state.location} name="location" onChange={this.handleChange}>
+                                <option value="Dining Room">Dining Room</option>
+                                <option value="Pool Room">Pool Room</option>
+                                <option value="Deck">Deck</option>
+                                <option value="Outdoor Dining">Outdoor Dining</option>
+                            </select>
                             <div>
                                 <label>Date</label>
                                 <DatePicker disabledDate={d => !d || d.isBefore(this.minimum)} onChange={this.handleDateChange} format={this.dateFormat} />

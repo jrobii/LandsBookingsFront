@@ -54,7 +54,7 @@ class Admin extends React.Component {
 
   render() {
     const bookings = this.state.bookings.map(booking => <Booking key={booking.id} id={booking.id} firstName={booking.firstName} lastName={booking.lastName} phoneNum={booking.phoneNum}
-      date={booking.date} time={booking.time} persons={booking.persons} requests={booking.requests} onDelete={this.handleDelete} />);
+      location={booking.location} date={booking.date} time={booking.time} persons={booking.persons} requests={booking.requests} onDelete={this.handleDelete} />);
     return (
       <div className="bookingTable">
         <DatePicker style={{ marginBottom: 10, marginRight: 10 }} onChange={this.handleDateChange} format={this.dateFormat} />
@@ -65,13 +65,14 @@ class Admin extends React.Component {
               <th>First Name</th>
               <th>Last Name</th>
               <th>Phone Number</th>
+              <th>Location</th>
               <th>Date & Time</th>
               <th>Persons Attending</th>
               <th>Requests</th>
               <th>Actions</th>
             </tr>
           </thead>
-          <tbody>{bookings.length ? bookings : <h3>There are currently no bookings for this date.</h3>}</tbody>
+          <tbody>{bookings.length ? bookings : <tr><td>There are currently no bookings for this date.</td></tr>}</tbody>
         </table>
       </div>
     )
