@@ -2,6 +2,8 @@ import React from 'react';
 import Booking from './Booking';
 import { DatePicker } from 'antd';
 import '../css/admin.css';
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
 
 class Admin extends React.Component {
   constructor(props) {
@@ -17,6 +19,27 @@ class Admin extends React.Component {
   }
 
   dateFormat = 'DD/MM/YYYY';
+
+  exportPDF = () => {
+    const doc = new jsPDF("landscape", "pt", "A4");
+    doc.setFontSize(15);
+    const title = "Booking Report";
+    const headers = [["First Name", "Last Name", "Phone #", "Location", "Date", "Time", "Persons", "Requests"]]
+
+    const data = this.state.bookings.map(booking => [booking.firstName, booking.lastName, booking.phoneNum, 
+    booking.location, booking.date, booking.time, booking.persons, booking.requests]);
+
+    let content = {
+      startY: 50,
+      head: headers,
+      body: data
+    };
+
+    doc.text(title, 40, 40);
+    doc.autoTable(content);
+    doc.save("report.pdf");
+
+  }
 
   handleGetBookings(e) {
     e.preventDefault();
@@ -74,6 +97,7 @@ class Admin extends React.Component {
           </thead>
           <tbody>{bookings.length ? bookings : <tr><td>There are currently no bookings for this date.</td></tr>}</tbody>
         </table>
+        <button onClick={() => this.exportPDF()}>Generate Report</button>
       </div>
     )
   }
