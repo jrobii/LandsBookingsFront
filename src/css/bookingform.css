@@ -112,6 +112,18 @@ html, body {
   
   /* When moving the mouse over the submit button, add a darker green color */
   .submit:hover {
-    background-color: white;
+    background-color: lightgrey;
     color: #626262;
+  }
+
+  .date {
+    padding: 0 0 1% 0;
+  }
+
+  .time {
+    padding: 0 0 1% 0;
+  }
+
+  .locationSelect {
+    padding: 0 0 1% 0;
   }

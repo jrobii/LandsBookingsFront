@@ -96,19 +96,23 @@ class BookingForm extends React.Component {
               <input type="text" name="phoneNum" value={this.state.phoneNum} onChange={this.handleChange} />
 
               <label>Where would you like to sit?</label>
+              <div className="locationSelect">
               <select value={this.state.location} name="location" onChange={this.handleChange}>
                 <option value="Dining Room">Dining Room</option>
                 <option value="Pool Room">Pool Room</option>
                 <option value="Deck">Deck</option>
                 <option value="Outdoor Dining">Outdoor Dining</option>
               </select>
+              </div>
 
-              <div>
-                <label>Date</label>
+              <label>Date</label>
+              <div className="date">
                 <DatePicker disabledDate={d => !d || d.isBefore(this.minimum)} onChange={this.handleDateChange} format={this.dateFormat} />
               </div>
-              <div>
-                <label>Time</label>
+              
+              <label>Time</label>
+              <div className="time">
+                
                 <TimePicker minuteStep={15} use12Hours format="h:mm a" onChange={this.handleTimeChange} />
               </div>
               <label>Number of Persons</label>
