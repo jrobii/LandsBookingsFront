@@ -54,7 +54,7 @@ class BookingForm extends React.Component {
 
     e.preventDefault();
 
-    fetch("/api/createBooking", {
+    fetch("https://api.landshotelbookings.com/api/createBooking", {
       method: 'POST',
       headers: {
         'Accept': 'application/json',

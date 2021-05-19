@@ -17,7 +17,7 @@ class Login extends React.Component {
   }
 
   componentDidMount() {
-    fetch('/api/checkAuth')
+    fetch('https://api.landshotelbookings.com/api/checkAuth')
       .then(res => res.json())
       .then(data => {
         if (data.authenticated && !this.props.isLogged) {
@@ -35,7 +35,7 @@ class Login extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    fetch("/api/login", {
+    fetch("https://api.landshotelbookings.com/api/login", {
       method: 'POST',
       headers: {
         'Accept': 'application/json',

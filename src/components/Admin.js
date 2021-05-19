@@ -62,7 +62,7 @@ class Admin extends React.Component {
   }
 
   async handleDelete(id) {
-    await fetch("/api/admin", {
+    await fetch("https://api.landshotelbookings.com/api/admin", {
       method: 'DELETE',
       headers: {
         'Accept': 'application/json',
