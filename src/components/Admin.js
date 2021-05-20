@@ -43,7 +43,7 @@ class Admin extends React.Component {
 
   handleGetBookings(e) {
     e.preventDefault();
-    fetch("/api/admin", {
+    fetch("https://api.landshotelbookings.com/api/admin", {
       method: 'POST',
       credentials: 'include',
       headers: {
