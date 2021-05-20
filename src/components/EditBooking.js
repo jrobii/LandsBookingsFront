@@ -101,13 +101,13 @@ class EditBooking extends React.Component {
                     <div className="editForm">
                         <form>
                             <label>First Name</label>
-                            <input type="text" name="firstName" value={this.state.firstName} onChange={this.handleChange} />
+                            <input type="text" name="firstName" value={this.state.firstName} onChange={this.handleChange} required/>
 
                             <label>Last Name</label>
-                            <input type="text" name="lastName" value={this.state.lastName} onChange={this.handleChange} />
+                            <input type="text" name="lastName" value={this.state.lastName} onChange={this.handleChange} required/>
 
                             <label>Phone Number</label>
-                            <input type="text" name="phoneNum" value={this.state.phoneNum} onChange={this.handleChange} />
+                            <input type="text" name="phoneNum" value={this.state.phoneNum} onChange={this.handleChange} required/>
 
                             <label>Location</label>
                             <select value={this.state.location} name="location" onChange={this.handleChange}>
