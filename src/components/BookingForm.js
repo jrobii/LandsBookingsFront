@@ -87,17 +87,17 @@ class BookingForm extends React.Component {
           <div className="form">
             <form>
               <label>First Name</label>
-              <input type="text" name="firstName" value={this.state.firstName} onChange={this.handleChange} />
+              <input type="text" name="firstName" value={this.state.firstName} onChange={this.handleChange} required/>
 
               <label>Last Name</label>
-              <input type="text" name="lastName" value={this.state.lastName} onChange={this.handleChange} />
+              <input type="text" name="lastName" value={this.state.lastName} onChange={this.handleChange} required/>
 
               <label>Phone Number</label>
-              <input type="text" name="phoneNum" value={this.state.phoneNum} onChange={this.handleChange} />
+              <input type="tel" name="phoneNum" value={this.state.phoneNum} onChange={this.handleChange} pattern="[0-9]{10}" required/>
 
               <label>Where would you like to sit?</label>
               <div className="locationSelect">
-              <select value={this.state.location} name="location" onChange={this.handleChange}>
+              <select value={this.state.location} name="location" onChange={this.handleChange} required>
                 <option value="Dining Room">Dining Room</option>
                 <option value="Pool Room">Pool Room</option>
                 <option value="Deck">Deck</option>
@@ -113,10 +113,10 @@ class BookingForm extends React.Component {
               <label>Time</label>
               <div className="time">
                 
-                <TimePicker minuteStep={15} use12Hours format="h:mm a" onChange={this.handleTimeChange} />
+                <TimePicker minuteStep={15} use12Hours format="h:mm a" onChange={this.handleTimeChange}/>
               </div>
               <label>Number of Persons</label>
-              <input type="number" name="persons" value={this.state.persons} onChange={this.handleChange} />
+              <input type="number" name="persons" value={this.state.persons} onChange={this.handleChange} required/>
 
               <label>Special Requests</label>
               <textarea name="requests" value={this.state.requests} onChange={this.handleChange} />

@@ -63,10 +63,10 @@ class Login extends React.Component {
       return (
         <form className="loginForm">
           <label>Username</label>
-          <input type="text" name="username" value={this.state.username} onChange={this.handleChange} />
+          <input type="text" name="username" value={this.state.username} onChange={this.handleChange} required/>
   
           <label>Password</label>
-          <input type="text" name="password" value={this.state.password} onChange={this.handleChange} />
+          <input type="password" name="password" value={this.state.password} onChange={this.handleChange} required/>
           <button type="button" onClick={this.handleSubmit}>Submit</button>
         </form>
         
