@@ -45,6 +45,7 @@ class Admin extends React.Component {
     e.preventDefault();
     fetch("/api/admin", {
       method: 'POST',
+      credentials: 'include',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
@@ -64,6 +65,7 @@ class Admin extends React.Component {
   async handleDelete(id) {
     await fetch("https://api.landshotelbookings.com/api/admin", {
       method: 'DELETE',
+      credentials: 'include',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'

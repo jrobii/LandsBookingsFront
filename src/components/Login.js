@@ -17,11 +17,11 @@ class Login extends React.Component {
   }
 
   componentDidMount() {
-    fetch('https://api.landshotelbookings.com/api/checkAuth')
-      .then(res => res.json())
+    fetch('https://api.landshotelbookings.com/api/checkAuth', {
+      credentials: 'include',
+    }).then(res => res.json())
       .then(data => {
-        if (data.authenticated && !this.props.isLogged) {
-          
+        if (data.authenticated && !this.props.isLogged) { 
           this.props.signIn()
           this.props.push('/admin');
         }
@@ -37,6 +37,7 @@ class Login extends React.Component {
 
     fetch("https://api.landshotelbookings.com/api/login", {
       method: 'POST',
+      credentials: 'include',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
@@ -44,11 +45,9 @@ class Login extends React.Component {
       body: JSON.stringify(this.state)
     }).then((res) => res.json())
     .then((data) => {
-      console.log(data);
       if (data.status === "success" && data.hasOwnProperty('token')) {
           this.props.signIn()
           this.props.push('/admin');
-          console.log(this.props)
       }
     })
     .catch((err) => console.log(err))
