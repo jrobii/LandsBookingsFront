@@ -4,6 +4,8 @@ import { signIn } from '../actions';
 import { push } from 'connected-react-router';
 import '../css/login.css';
 
+import { NotificationManager } from 'react-notifications';
+
 class Login extends React.Component {
   constructor(props) {
     super(props);
@@ -17,7 +19,7 @@ class Login extends React.Component {
   }
 
   componentDidMount() {
-    fetch('https://api.landshotelbookings.com/api/checkAuth', {
+    fetch(`https://api.landshotelbookings.com/api/checkAuth`, {
       credentials: 'include',
     }).then(res => res.json())
       .then(data => {
@@ -35,7 +37,7 @@ class Login extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    fetch("https://api.landshotelbookings.com/api/login", {
+    fetch(`https://api.landshotelbookings.com/api/login`, {
       method: 'POST',
       credentials: 'include',
       headers: {
@@ -46,11 +48,16 @@ class Login extends React.Component {
     }).then((res) => res.json())
     .then((data) => {
       if (data.status === "success" && data.hasOwnProperty('token')) {
+        NotificationManager.success('You have successfully logged in.', 'Success!', 5000);
           this.props.signIn()
           this.props.push('/admin');
+      } else {
+        NotificationManager.error('Please provide correct credentials.', 'Error!', 5000);
       }
     })
-    .catch((err) => console.log(err))
+    .catch(() => {
+      NotificationManager.error('An unknown error has occurred.', 'Error!', 5000);
+    });
     
     this.setState({
       username: "",

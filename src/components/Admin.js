@@ -5,6 +5,8 @@ import '../css/admin.css';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 
+import { NotificationManager } from 'react-notifications';
+
 class Admin extends React.Component {
   constructor(props) {
     super(props);
@@ -43,7 +45,7 @@ class Admin extends React.Component {
 
   handleGetBookings(e) {
     e.preventDefault();
-    fetch("https://api.landshotelbookings.com/api/admin", {
+    fetch(`https://api.landshotelbookings.com/api/admin`, {
       method: 'POST',
       credentials: 'include',
       headers: {
@@ -63,7 +65,7 @@ class Admin extends React.Component {
   }
 
   async handleDelete(id) {
-    await fetch("https://api.landshotelbookings.com/api/admin", {
+    await fetch(`https://api.landshotelbookings.com/api/admin`, {
       method: 'DELETE',
       credentials: 'include',
       headers: {
@@ -74,32 +76,73 @@ class Admin extends React.Component {
     }).then(() => {
       let updatedBookings = [...this.state.bookings].filter(i => i.id !== id);
       this.setState({ ...this.state, bookings: updatedBookings })
-    })
+      NotificationManager.success('The booking was deleted successfully.', 'Success!', 5000);
+    }).catch(() =>{
+      NotificationManager.error('An unknown error has occurred.', 'Error!', 5000);
+    });
   }
 
   render() {
     const bookings = this.state.bookings.map(booking => <Booking key={booking.id} id={booking.id} firstName={booking.firstName} lastName={booking.lastName} phoneNum={booking.phoneNum}
       location={booking.location} date={booking.date} time={booking.time} persons={booking.persons} requests={booking.requests} onDelete={this.handleDelete} />);
+      
+    const deckBookings = bookings.filter(location => location.props.location === "Deck");
+    const tvBookings = bookings.filter(location => location.props.location === "Pool Room");
+    const diningBookings = bookings.filter(location => location.props.location === "Dining Room");
+
     return (
       <div className="bookingTable">
         <DatePicker style={{ marginBottom: 10, marginRight: 10 }} onChange={this.handleDateChange} format={this.dateFormat} />
-        <button type="button" onClick={this.handleGetBookings}>Find Bookings</button>
+        <button className="findButton" type="button" onClick={this.handleGetBookings}>Find Bookings</button>
+
+        <h1 className="heading">Deck Bookings</h1>
         <table id="bookings">
           <thead>
             <tr>
               <th>First Name</th>
               <th>Last Name</th>
               <th>Phone Number</th>
-              <th>Location</th>
               <th>Date & Time</th>
               <th>Persons Attending</th>
               <th>Requests</th>
               <th>Actions</th>
             </tr>
           </thead>
-          <tbody>{bookings.length ? bookings : <tr><td>There are currently no bookings for this date.</td></tr>}</tbody>
+          <tbody>{deckBookings.length ? deckBookings : <tr><td>There are currently no bookings for this date.</td></tr>}</tbody>
         </table>
-        <button onClick={() => this.exportPDF()}>Generate Report</button>
+
+        <h1 className="heading">TV Room Bookings</h1>
+        <table id="bookings">
+          <thead>
+            <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Phone Number</th>
+              <th>Date & Time</th>
+              <th>Persons Attending</th>
+              <th>Requests</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>{tvBookings.length ? tvBookings : <tr><td>There are currently no bookings for this date.</td></tr>}</tbody>
+        </table>
+
+        <h1 className="heading">Dining Room Bookings</h1>
+        <table id="bookings">
+          <thead>
+            <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Phone Number</th>
+              <th>Date & Time</th>
+              <th>Persons Attending</th>
+              <th>Requests</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>{diningBookings.length ? diningBookings : <tr><td>There are currently no bookings for this date.</td></tr>}</tbody>
+        </table>
+        <button className="reportButton" onClick={() => this.exportPDF()}>Generate Report</button>
       </div>
     )
   }

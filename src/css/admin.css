@@ -26,3 +26,74 @@
 .noBookings {
     text-align: center;
 }
+
+#bookings {
+    border-collapse: collapse;
+    display: table;
+    width: 100%;
+    table-layout: auto;
+  }
+  
+  #bookings td, #bookings th {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+  }
+  
+  #bookings tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #bookings tr:hover {background-color: #ddd;}
+  
+  #bookings th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #4CAF50;
+    color: white;
+  }
+
+  .heading {
+      text-align: center;
+      border-bottom: 1px solid lightgrey;
+      padding: 5px;
+  }
+
+  .reportButton {
+    background-color: #555555; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    margin-top: 1%;
+    border: 1px solid #555555;
+  }
+
+  .reportButton:hover {
+    background-color: white; /* Green */
+    color: black;
+    border: 1px solid #555555;
+    
+  }
+
+  .findButton {
+    background-color: #555555; /* Green */
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    padding: 5px;
+    border: 1px solid #555555;
+  }
+
+  .findButton:hover {
+    background-color: white; /* Green */
+    color: black;
+    border: 1px solid #555555;
+    
+  }

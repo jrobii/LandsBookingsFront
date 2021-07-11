@@ -3,6 +3,8 @@ import ReCAPTCHA from 'react-google-recaptcha';
 import { DatePicker, TimePicker } from 'antd';
 import '../css/bookingform.css';
 
+import { NotificationManager } from 'react-notifications';
+
 class BookingForm extends React.Component {
   constructor(props) {
     super(props);
@@ -48,13 +50,13 @@ class BookingForm extends React.Component {
 
   handleSubmit(e) {
     if (this.recaptcha.getValue() === "" || null) {
-      alert('Error, before submitting please check the ReCAPCTHA box.');
+      NotificationManager.error('Please check the ReCAPTCHA box.', 'Error!', 5000);
       return;
     }
 
     e.preventDefault();
 
-    fetch("https://api.landshotelbookings.com/api/createBooking", {
+    fetch(`https://api.landshotelbookings.com/api/createBooking`, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -62,8 +64,13 @@ class BookingForm extends React.Component {
       },
       body: JSON.stringify(this.state)
     }).then((res) => res.json())
-      .then((data) => console.log(data))
-      .catch((err) => console.log(err))
+      .then((data) => {
+        if (data.success === true) {
+          NotificationManager.success('The booking has been successfully created.', 'Success!', 5000);
+        }
+      }).catch(() => {
+        NotificationManager.error('An unknown error has occurred.', 'Error!', 5000);
+      });
 
     this.setState({
       firstName: "",
@@ -98,6 +105,7 @@ class BookingForm extends React.Component {
               <label>Where would you like to sit?</label>
               <div className="locationSelect">
               <select value={this.state.location} name="location" onChange={this.handleChange} required>
+                <option value="" disabled>Select an option.</option>
                 <option value="Dining Room">Dining Room</option>
                 <option value="Pool Room">Pool Room</option>
                 <option value="Deck">Deck</option>
@@ -113,7 +121,7 @@ class BookingForm extends React.Component {
               <label>Time</label>
               <div className="time">
                 
-                <TimePicker minuteStep={15} use12Hours format="h:mm a" onChange={this.handleTimeChange}/>
+                <TimePicker minuteStep={15} use12Hours format="h:mm a" onChange={this.handleTimeChange} />
               </div>
               <label>Number of Persons</label>
               <input type="number" name="persons" value={this.state.persons} onChange={this.handleChange} required/>

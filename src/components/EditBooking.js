@@ -29,7 +29,7 @@ class EditBooking extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
 
-        fetch("https://api.landshotelbookings.com/api/booking", {
+        fetch(`https://api.landshotelbookings.com/api/booking`, {
             method: 'PUT',
             credentials: 'include',
             headers: {
@@ -65,7 +65,7 @@ class EditBooking extends React.Component {
     }
 
     getBooking(id) {
-        fetch("https://api.landshotelbookings.com/api/booking", {
+        fetch(`https://api.landshotelbookings.com/api/booking`, {
             method: 'POST',
             credentials: 'include',
             headers: {
